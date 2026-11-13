@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>@attar10x · links</title>
+<meta name="description" content="Games and sounds by @attar10x: play Saqer, listen to Tayf.">
+<meta name="theme-color" content="#070403">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://attarpix.github.io/">
+<meta property="og:title" content="@attar10x">
+<meta property="og:description" content="العب صقر · Tayf طيف">
+<meta property="og:image" content="https://attarpix.github.io/saqer/assets/share.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="tayf.png">
+<style>
+  @font-face { font-family: VT323; src: url(fonts/vt323.woff2) format('woff2'); font-display: swap; }
+  @font-face { font-family: Naskh; src: url(fonts/noto-naskh-arabic.woff2) format('woff2'); font-display: swap; }
+  /* the Tayf app's colours: AMBER = the light of the machine, BLUE = the buttons (its "Boys" theme) */
+  :root {
+    --bg: #070403; --amb: #ff9a1a; --amb-text: #ffa63a; --amb-dim: #a65f22; --amb-line: #7a3f12;
+    --acc: #3a8dff; --acc-rgb: 58,141,255; --acc-hi: #9fd0ff; --btn-text: #8cc4ff; --btn-bg: #070c16; --btn-line: #17253a;
+    --bloom: 0 0 1px rgba(255,190,110,.85), 0 0 8px rgba(255,120,0,.6), 0 0 20px rgba(255,90,0,.3);
+    --glass: radial-gradient(115% 90% at 50% 42%, rgba(255,120,20,.22), rgba(150,50,0,.13) 50%, rgba(30,10,2,.04) 80%), #0b0402;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body { margin: 0; min-height: 100dvh; background: radial-gradient(90% 60% at 50% 0%, #1a0d05 0%, var(--bg) 70%);
+         color: var(--amb-text); font: 20px/1.3 VT323, monospace; display: flex; justify-content: center;
+         padding: calc(28px + env(safe-area-inset-top)) 16px calc(32px + env(safe-area-inset-bottom)); -webkit-font-smoothing: antialiased; }
+  main { width: 100%; max-width: 440px; }
+  .ar { font-family: Naskh, serif; direction: rtl; }
+
+  /* the screen: glowing glass, scanlines, a live wave, the name */
+  .crt { position: relative; border: 1px solid var(--amb-line); border-radius: 22px; padding: 10px; background: #0a0503;
+         box-shadow: 0 0 0 1px #000, 0 18px 50px rgba(0,0,0,.8), 0 0 40px rgba(255,110,0,.08); }
+  .glass { position: relative; border-radius: 16px; overflow: hidden; background: var(--glass); aspect-ratio: 5 / 3;
+           box-shadow: inset 0 0 40px rgba(0,0,0,.85), inset 0 0 2px rgba(255,150,40,.4); }
+  .glass canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .glass::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+                  background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px),
+                              radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.7)); }
+  .name { position: absolute; left: 0; right: 0; top: 14%; text-align: center; z-index: 1; }
+  .name b { display: block; font-weight: normal; font-size: clamp(40px, 12vw, 56px); letter-spacing: 3px; color: var(--amb); text-shadow: var(--bloom); }
+  .name span { display: block; color: var(--amb-dim); font-size: 19px; letter-spacing: 2px; margin-top: 2px; }
+  .name span .ar { font-size: 15px; letter-spacing: 0; }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #3cff7a; box-shadow: 0 0 8px #3cff7a;
+         vertical-align: middle; margin-right: 10px; position: relative; top: -4px; animation: blink 2.4s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: .35; } }
+
+  /* the links: backlit keys like the app's preset buttons */
+  .links { display: grid; gap: 12px; margin-top: 22px; }
+  .link { position: relative; display: flex; align-items: center; gap: 14px; min-height: 76px; padding: 12px 16px;
+          border: 1px solid var(--btn-line); border-radius: 14px; text-decoration: none; color: var(--btn-text); overflow: hidden;
+          background: radial-gradient(120% 140% at 30% 120%, rgba(var(--acc-rgb), .16), transparent 60%), var(--btn-bg);
+          box-shadow: inset 0 -10px 18px -12px rgba(var(--acc-rgb), .55), 0 0 12px -6px rgba(var(--acc-rgb), .5);
+          text-shadow: 0 0 4px rgba(var(--acc-rgb), .55); transition: border-color .15s, box-shadow .15s, transform .08s;
+          -webkit-tap-highlight-color: transparent; }
+  .link:hover, .link:focus-visible { border-color: var(--acc); outline: none;
+          box-shadow: inset 0 -10px 22px -10px rgba(var(--acc-rgb), .8), 0 0 18px -4px rgba(var(--acc-rgb), .6); }
+  .link:active { transform: translateY(1px) scale(.995); }
+  .link img { width: 52px; height: 52px; border-radius: 12px; flex: none; image-rendering: auto;
+              box-shadow: 0 0 0 1px rgba(var(--acc-rgb), .35), 0 4px 12px rgba(0,0,0,.6); }
+  .txt { flex: 1; min-width: 0; }
+  .txt b { display: block; font-weight: normal; font-size: 27px; letter-spacing: 2px; color: var(--acc-hi); line-height: 1.05; }
+  .txt b .ar { font-size: 22px; letter-spacing: 0; }
+  .txt small { display: block; font-size: 17px; color: var(--btn-text); opacity: .8; letter-spacing: 1px; margin-top: 3px; }
+  .txt small.ar { font-size: 14px; letter-spacing: 0; opacity: .7; text-align: left; }
+  .go { flex: none; width: 22px; height: 22px; stroke: var(--btn-text); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: .7; }
+  .new { position: absolute; top: 8px; right: 10px; font-size: 15px; letter-spacing: 1px; color: var(--amb); text-shadow: var(--bloom); }
+
+  footer { text-align: center; color: var(--amb-line); font-size: 16px; letter-spacing: 2px; margin-top: 26px; }
+  @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="crt">
+    <div class="glass">
+      <canvas id="wave" aria-hidden="true"></canvas>
+      <div class="name">
+        <b><i class="dot"></i>@ATTAR10X</b>
+        <span>GAMES · SOUNDS &nbsp;<span class="ar">ألعاب وأصوات</span></span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="links">
+    <a class="link" href="https://attarpix.github.io/saqer/">
+      <img src="https://attarpix.github.io/saqer/icons/icon-192.png" alt="" width="52" height="52">
+      <span class="txt">
+        <b><span class="ar">العب صقر</span> · SAQER</b>
+        <small>a pixel-art journey through Amman</small>
+        <small class="ar">رحلة من وسط البلد إلى فيلادلفيا</small>
+      </span>
+      <svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="link" href="https://attarpix.github.io/tayf/">
+      <img src="tayf.png" alt="" width="52" height="52">
+      <span class="txt">
+        <b>TAYF · <span class="ar">طيف</span></b>
+        <small>sounds for focus, sleep and calm</small>
+        <small class="ar">أصوات للتركيز والنوم والهدوء</small>
+      </span>
+      <svg class="go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </nav>
+
+  <footer>● ATTARPIX</footer>
+</main>
+<script>
+/* the screen's live trace: an amber wave that slowly changes, like the Tayf screen (drawn only while visible) */
+(function () {
+  var c = document.getElementById('wave'), x = c.getContext('2d'), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() { var r = c.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); c.width = r.width * d; c.height = r.height * d; }
+  function draw(t) {
+    var W = c.width, H = c.height, y0 = H * 0.74, s = t / 1000;
+    x.clearRect(0, 0, W, H);
+    x.strokeStyle = 'rgba(255,150,40,.12)'; x.lineWidth = 1;                  // faint grid
+    for (var i = 1; i < 10; i++) { x.beginPath(); x.moveTo(W * i / 10, 0); x.lineTo(W * i / 10, H); x.stroke(); }
+    for (i = 1; i < 6; i++) { x.beginPath(); x.moveTo(0, H * i / 6); x.lineTo(W, H * i / 6); x.stroke(); }
+    x.lineWidth = Math.max(2, W / 260); x.lineJoin = 'round';
+    [[0.5, 'rgba(255,90,0,.35)', 10], [1, '#ff9a1a', 0]].forEach(function (p) {
+      x.beginPath();
+      for (var k = 0; k <= W; k += 3) {
+        var u = k / W, a = H * 0.075 * (0.6 + 0.4 * Math.sin(s * 0.4 + u * 2));
+        var y = y0 + a * Math.sin(u * 14 - s * 1.6) + a * 0.35 * Math.sin(u * 37 + s * 0.9);
+        k ? x.lineTo(k, y) : x.moveTo(k, y);
+      }
+      x.strokeStyle = p[1]; x.shadowColor = '#ff7a00'; x.shadowBlur = p[2] || W / 60; x.stroke();
+    });
+    x.shadowBlur = 0;
+    if (!still && !document.hidden) requestAnimationFrame(draw);
+  }
+  size(); addEventListener('resize', size);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden && !still) requestAnimationFrame(draw); });
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
